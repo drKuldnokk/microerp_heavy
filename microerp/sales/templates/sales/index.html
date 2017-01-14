@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>MicroERP</title>
+    
+    <style>
+tr {
+    text-align: left;
+}
+    
+td, tr {
+    padding: 4px
+}
+    
+ul.navigation {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation li{
+    display: inline;
+    float: left;
+}
+
+.navigation a {
+    padding: 10px;
+}
+    </style>
+</head>
+<body>
+    <div>
+        <ul class="navigation">
+            <li><a href="/">MicroERP</a></li>
+            <li><a href="/products">PRODUCTS</a></li>
+            <li><a href="/orders">SALES ORDERS</a></li>
+        </ul>
+        <br />
+    </div>
+    <div>
+        {% block content %}
+            <h3>Overview:</h3>
+            <ul>
+                <li>{{ n_products }} products</li>
+                <li>{{ n_sales_orders }} sales orders</li>
+                <li>{{ n_sales_lines }} sales lines</li>
+            </ul>
+        {% endblock content %}
+    </div>
+</body>
+</html>

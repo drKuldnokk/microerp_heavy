@@ -1,0 +1,22 @@
+{% extends "sales/index.html" %}
+{% block content %}
+<h1>SALES ORDER {{ order.id }}</h1>
+{% if lines %}
+    <table>
+        <thead>
+            <tr><th>Product</th><th>Quantity</th></tr>
+        </thead>
+        <tbody>
+        {% for line in lines %}
+            <tr>
+                <td>{{ line.productName }}</td>
+                <td>{{ line.quantity }}</td>
+                <td><a href="{% url 'related_products' order.id line.product %}">related products</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No orders</p>
+{% endif %}
+{% endblock content%}

@@ -1,0 +1,37 @@
+{% extends "sales/index.html" %}
+{% block content %}
+<h1>PRODUCTS</h1>
+
+{% if products %}
+    <table>
+        <thead>
+            <tr><th>Id</th><th>Name</th><th>Popularity</th></tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr><td>{{ product.id }}</td><td>{{ product.name }}</td><td>{{ product.popularity }}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No products</p>
+{% endif %}
+
+<br />
+
+<div class="paginator">
+    <span class="step-links">
+        {% if products.has_previous %}
+            <a href="?page={{ products.previous_page_number }}"><<<&nbsp</a>
+        {% endif %}
+        
+        <span class="current">
+            page {{ products.number }} / {{ products.paginator.num_pages }}
+        </span>
+        
+        {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}">&nbsp>>></a>
+        {% endif %}
+    </span>
+</div>
+{% endblock content %}

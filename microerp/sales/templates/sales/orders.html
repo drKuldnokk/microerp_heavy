@@ -1,0 +1,33 @@
+{% extends "sales/index.html" %}
+{% block content %}
+<h1>SALES ORDERS</h1>
+
+{% if orders %}
+    <table>
+        <tr><th>Id</th></tr>
+    {% for order in orders %}
+        <tr><td/><a href="{% url 'order' order.id %}">{{ order.id }}</a></td></tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No orders</p>
+{% endif %}
+
+<br />
+
+<div class="paginator">
+    <span class="step-links">
+        {% if orders.has_previous %}
+            <a href="?page={{ orders.previous_page_number }}"><<<&nbsp</a>
+        {% endif %}
+        
+        <span class="current">
+            page {{ orders.number }} / {{ orders.paginator.num_pages }}
+        </span>
+        
+        {% if orders.has_next %}
+            <a href="?page={{ orders.next_page_number }}">&nbsp>>></a>
+        {% endif %}
+    </span>
+</div>
+{% endblock content %}
